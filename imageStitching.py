@@ -6,8 +6,7 @@ import re
 import imutils
 
 class ImageStitcher():
-    
-    def __init__(self,Dir_Path = "./input/office/"):
+    def __init__(self,Dir_Path = "input/office/"):
         self.path = Dir_Path
         self.img_path = sorted(os.listdir(Dir_Path), key=self._natural_sort_key)
         self.images = [cv2.imread(Dir_Path+image) for image in self.img_path]
@@ -29,7 +28,8 @@ class ImageStitcher():
 
         plt.tight_layout() 
         plt.show()
-        
+
+    # CV2 Stitcher
     def stitch(self):
         stitcher = cv2.Stitcher.create()
         (status, stitched) = stitcher.stitch(self.images,pano=None )
@@ -40,11 +40,11 @@ class ImageStitcher():
         else:
             print("Image stitching failed!")
             return None
-        
+
+    # Making the Panorama neat
     def crop_to_rectangle(self):
-        
         thresh_img = self.get_Pano_Mask()
-        # find first and last row of thresh_img to have values 
+        # Finding first and last row of thresh_img to have values 
         first_row = 0
         last_row = 0
 
@@ -61,7 +61,9 @@ class ImageStitcher():
         cropped_result = self.panorama[first_row:last_row, :]
         return cropped_result
 
+    # Panorama Mask
     def get_Pano_Mask(self):
         gray = cv2.cvtColor(self.panorama, cv2.COLOR_BGR2GRAY)
         thresh_img = cv2.threshold(gray, 0, 255 , cv2.THRESH_BINARY)[1]
         return thresh_img
+
