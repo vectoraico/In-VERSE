@@ -84,7 +84,9 @@ def reconstruct_with_options_and_visualize(image_folder, output_path):
     # Visualize dense reconstruction (optional)
     visualize_3d_reconstruction(mvs_path / "dense.ply")
 
-image_folder = pathlib.Path("./image_folder")
-output_path = pathlib.Path("./output_path")
-
-reconstruct_with_options_and_visualize(image_folder, output_path)
+if __name__ == '__main__':
+    image_folder = pathlib.Path("./image_folder")
+    output_path = pathlib.Path("./output_path")
+    
+    reconstruct_with_options_and_visualize(image_folder, output_path)
+    
