@@ -1,0 +1,6 @@
+[core]
+    remote = sun360
+['remote "gdrive"']
+    url = ../1CPdrhlEwpCK_74LuJWwGGvJhwx2YdUFF
+['remote "sun360"']
+    url = gdrive://1CPdrhlEwpCK_74LuJWwGGvJhwx2YdUFF

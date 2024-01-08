@@ -1,0 +1,6 @@
+outs:
+- md5: 9e6a723d772f24fb97b5edcbc0b3f28d.dir
+  size: 62695800
+  nfiles: 656
+  hash: md5
+  path: UDIS
