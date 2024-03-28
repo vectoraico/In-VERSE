@@ -1,0 +1,12 @@
+stitching_parameters:
+  crop: false
+  nfeatures: 1000
+  detector: sift
+  try_use_gpu: true
+  range_width: 1000
+  blend_strength: 1000
+  refinement_mask: "11111"
+  warper_type: spherical
+  confidence_threshold: 0.1
+  blender_type: multiband
+  matcher_type: homography
