@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>In-Verse</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../static/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="../static/css/responsive.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <style>
+    .mySlides {display:none;}
+    </style>
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="/index">
+            <img src="{{url_for('static', filename = "images/logo.png")}}" alt="" />
+          </a>
+          <div class="navbar-collapse" id="">
+            <ul class="navbar-nav justify-content-between ">
+              <!--
+              <div class="User_option">
+                <li class="">
+                  <a class="mr-4" href="">
+                    Login
+                  </a>
+                  <a class="" href="">
+                    Sign up
+                  </a>
+                </li>
+              </div>
+              -->
+            </ul>
+
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1">
+
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="/index">HOME</a>
+                <a href="/about">ABOUT</a>
+                <a href="/house/0">HOUSE</a>
+                <a href="/price">PRICING</a>
+                <a href="/contact">CONTACT US</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- sale section -->
+  <section class="sale_section layout_padding">
+
+
+            <div class="container">
+              <h1>Property Information</h1>
+              <div class="property-info">
+                  <h2>{{ property_name }}</h2>
+                  
+                  <!-- for displaying 3D obj  -->
+                  <a href="\model\{{model}}">
+                  <button>
+                    display 3D model
+                  </button>
+                </a>
+                  
+                  <!--  -->
+                  <p><strong>Location:</strong> {{ location }}</p>
+                  <p><strong>Description:</strong> {{ description }}</p>
+                  <p><strong>Property Type:</strong> {{ property_type }}</p>
+                  <p><strong>Number of Bedrooms:</strong> {{ num_bedrooms }}</p>
+                  <p><strong>Number of Bathrooms:</strong> {{ num_bathrooms }}</p>
+                  <p><strong>Size:</strong> {{ size }}</p>
+                  <p><strong>Amenities:</strong> {{ amenities }}</p>
+                  <p><strong>Price:</strong> {{ price }}</p>
+                  <p><strong>Contact Information:</strong></p>
+                  <ul>
+                      <li><strong>Agent/Owner Name:</strong> {{ agent_name }}</li>
+                      <li><strong>Phone:</strong> {{ phone }}</li>
+                      <li><strong>Email:</strong> {{ email }}</li>
+                      <li><strong>Website:</strong> {{ website }}</li>
+                  </ul>
+              </div>
+            </div>
+
+          <!--
+          <div class="image-gallery">
+            <h3>Image Gallery:</h3>
+            <div class = "slider-frame">
+              {% for image in image_gallery %}
+              <p>Image {{ loop.index }}</p>
+                <div class = "slider-images">
+                  <img src="{{ url_for('static', filename=image) }}">
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          -->
+          <div class="w3-content w3-display-container">
+          {% for image in image_gallery %}
+          <img class="mySlides" src="{{ url_for('static', filename=image) }}">
+          {% endfor %}
+          <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+          <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+          </div>
+          <br>
+  </section>
+  
+  <!-- end sale section -->
+
+
+
+  <!-- info section -->
+  <section class="info_section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="info_contact">
+            <h5>
+              About Us
+            </h5>
+            <div>
+              <div class="img-box">
+                <img src="{{url_for('static', filename = "images/location.png")}}" width="18px" alt="">
+              </div>
+              <p>
+                Address
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="{{url_for('static', filename = "images/phone.png")}}" width="12px" alt="">
+              </div>
+              <p>
+                +01 1234567890
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="{{url_for('static', filename = "images/mail.png")}}" width="18px" alt="">
+              </div>
+              <p>
+                demo@gmail.com
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="info_info">
+            <h5>
+              Information
+            </h5>
+            <p>
+              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="info_links">
+            <h5>
+              Useful Link
+            </h5>
+            <ul>
+              <li>
+                <a href="">
+                  There are many
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  variations of
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  passages of
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  Lorem Ipsum
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  available, but
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  the i
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section ">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a>
+      </p>
+    </div>
+  </section>
+  <!-- end  footer section -->
+
+
+  <script type="text/javascript" src="{{url_for('static', filename = "js/jquery-3.4.1.min.js")}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename = "js/bootstrap.js")}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename = "js/custom.js")}}"></script>
+  <script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      if (n > x.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = x.length} ;
+      for (i = 0; i <s x.length; i++) {
+        x[i].style.display = "none";
+      }
+      x[slideIndex-1].style.display = "block";
+    }
+  </script>
+</body>
+</body>
+
+</html>
