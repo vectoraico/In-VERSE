@@ -234,7 +234,15 @@
           <!-- for displaying 3D obj  -->
           <a class="button" href="/model/{{model}}">
             Explore 3D model
-        </a>
+          </a>
+          <br>
+          
+          <a href = "/download_pano/{{id}}">
+            <div style="margin-left:47%">
+              <img src="../static/images/VR.png" style="width:15%" text="View in VR">
+              <p style="margin-left:5px"> View In VR </p>
+          </div>
+          </a>
           
           <!--  -->
           <br>
@@ -251,7 +259,7 @@
           <p><strong>Amenities:</strong> {{ amenities }}</p>
         </td>
         <td>
-          <p><strong>Price:</strong> {{ price }}</p>
+          <p><strong>Price:</strong> Rs. {{ price }}</p>
           <p><strong>Contact Information:</strong></p>
           <ul>
               <li><strong>Agent/Owner Name:</strong> {{ agent_name }}</li>

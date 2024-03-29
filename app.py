@@ -54,6 +54,13 @@ def price():
 def contact():
     return render_template('contact.html')
 
+@app.route('/download_pano/<int:property_id>',methods = ["GET"])
+def pano(property_id):
+    print(property_id)
+    directory = 'static/images/original'
+    filename=f"{property_id}.jpg"
+    return send_from_directory(directory, filename, as_attachment=True)
+
 # @app.route('/render')
 # def render():
 #     # path = f"../static/models/output/{path}_geometry_0.ply"
@@ -64,7 +71,8 @@ def showmodel(model_name):
     num_geometries = 2 # Example value
     # Call the visualize.py script with the model name and number of geometries as arguments
     subprocess.run(["python", "visualise.py", model_name, str(num_geometries)])
-    pass
+    return render_template("price.html")
+
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
@@ -72,6 +80,8 @@ def signup():
 @app.route('/login')
 def login():
     return render_template('login.html')
+
+
 
 
 if __name__ == '__main__':
