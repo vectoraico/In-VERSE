@@ -1,25 +1,25 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import pandas as pd
 import os
 import argparse
-import open3d as o3d
+# import open3d as o3d
 
-def load_geometries(img_file, num_geometries):
-    loaded_geometries = []
-    for i in range(num_geometries):
-        try:
-            mesh = o3d.io.read_triangle_mesh(f"static/models/output/{img_file}_geometry_{i}.ply")
-            loaded_geometries.append(mesh)
-        except:
-            try:
-                lines = o3d.io.read_line_set(f"static/models/output/{img_file}_geometry_{i}.ply")
-                loaded_geometries.append(lines)
-            except:
-                print(f"Failed to load {img_file}_geometry_{i}.ply")
-    return loaded_geometries
+# def load_geometries(img_file, num_geometries):
+#     loaded_geometries = []
+#     for i in range(num_geometries):
+#         try:
+#             mesh = o3d.io.read_triangle_mesh(f"static/models/output/{img_file}_geometry_{i}.ply")
+#             loaded_geometries.append(mesh)
+#         except:
+#             try:
+#                 lines = o3d.io.read_line_set(f"static/models/output/{img_file}_geometry_{i}.ply")
+#                 loaded_geometries.append(lines)
+#             except:
+#                 print(f"Failed to load {img_file}_geometry_{i}.ply")
+#     return loaded_geometries
 
-def visualize_geometries(geometries):
-    o3d.visualization.draw_geometries(geometries, mesh_show_back_face=True)
+# def visualize_geometries(geometries):
+#     o3d.visualization.draw_geometries(geometries)
     
 app = Flask(__name__)
 
@@ -53,6 +53,7 @@ def house(property_id):
                 property_data["image_gallery"].append(file_path)
     print(property_data["image_gallery"])
     property_data["model"] = models[int(property_id)]
+    property_data["id"] = property_id
     # property_data["html"] = ""
     # for i in property_data["image_gallery"]:
     #     property_data["html"] += f'<div class = "slider-images"><img src="../static/{i}"></div>'
@@ -70,26 +71,34 @@ def price():
 def contact():
     return render_template('contact.html')
 
+@app.route('/render')
+def render():
+    # path = f"../static/models/output/{path}_geometry_0.ply"
+    return render_template('render.html')
+
+# @app.route('/model/<string:model_name>')
+# def showmodel(model_name):
+#     args = {
+#         "img": model_name,
+#         "num_geometries":2
+#     }
+#     loaded_geometries = load_geometries(args["img"], args["num_geometries"])
+#     print(model_name)
+#     visualize_geometries(loaded_geometries)
+
+@app.route('/model')
+def models():
+    path = f"audi1.glb"
+    return send_from_directory('static', path)
+    
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
 
 @app.route('/login')
 def login():
     return render_template('login.html')
 
-@app.route('/model/<string:model_name>')
-def showmodel(model_name):
-    args = {
-        "img": model_name,
-        "num_geometries":2
-    }
-    loaded_geometries = load_geometries(args["img"], args["num_geometries"])
-    print(model_name)
-    visualize_geometries(loaded_geometries)
-    
-    
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
-    
 if __name__ == '__main__':
     app.run(debug=True, port=8000)

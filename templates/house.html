@@ -28,8 +28,109 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <style>
-    .mySlides {display:none;}
-    </style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Position the image container (needed to position the left and right arrows) */
+    .container {
+      position: relative;
+    }
+    
+    /* Hide the images by default */
+    .mySlides {
+      display: none;
+    }
+    .mySlides img{
+      height:250px
+    }
+    
+    /* Add a pointer when hovering over the thumbnail images */
+    .cursor {
+      cursor: pointer;
+    }
+    
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 40%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+    
+    /* Container for image text */
+    .caption-container {
+      text-align: center;
+      background-color: #222;
+      padding: 2px 16px;
+      color: white;
+    }
+    
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    /* four columns side by side */
+    .column {
+      float: left;
+      width: 25%;
+    }
+    
+    /* Add a transparency effect for thumnbail images */
+    .demo {
+      opacity: 0.6;
+    }
+    
+    .active,
+    .demo:hover {
+      opacity: 1;
+    }
+    .button {
+      background-color: #04AA6D;
+      border: none;
+      color: white;
+      padding: 15px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      margin-left:43%;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body class="sub_page">
@@ -88,65 +189,86 @@
 
   <!-- sale section -->
   <section class="sale_section layout_padding">
+    <div class="container">
+      <h1>Property Information</h1>
+      <div class="property-info">
+          <h2>{{ property_name }}</h2>
+          <div class="container">
 
-
-            <div class="container">
-              <h1>Property Information</h1>
-              <div class="property-info">
-                  <h2>{{ property_name }}</h2>
-                  
-                  <!-- for displaying 3D obj  -->
-                  <a href="\model\{{model}}">
-                  <button>
-                    display 3D model
-                  </button>
-                </a>
-                  
-                  <!--  -->
-                  <p><strong>Location:</strong> {{ location }}</p>
-                  <p><strong>Description:</strong> {{ description }}</p>
-                  <p><strong>Property Type:</strong> {{ property_type }}</p>
-                  <p><strong>Number of Bedrooms:</strong> {{ num_bedrooms }}</p>
-                  <p><strong>Number of Bathrooms:</strong> {{ num_bathrooms }}</p>
-                  <p><strong>Size:</strong> {{ size }}</p>
-                  <p><strong>Amenities:</strong> {{ amenities }}</p>
-                  <p><strong>Price:</strong> {{ price }}</p>
-                  <p><strong>Contact Information:</strong></p>
-                  <ul>
-                      <li><strong>Agent/Owner Name:</strong> {{ agent_name }}</li>
-                      <li><strong>Phone:</strong> {{ phone }}</li>
-                      <li><strong>Email:</strong> {{ email }}</li>
-                      <li><strong>Website:</strong> {{ website }}</li>
-                  </ul>
+            <!-- Full-width images with number text -->
+            <div class="mySlides">
+              <img src="../static/images/{{id}}/1.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+              <img src="../static/images/{{id}}/2.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+              <img src="../static/images/{{id}}/3.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+              <img src="../static/images/{{id}}/4.jpg" style="width:100%">
+            </div>
+        
+            <!-- Thumbnail images -->
+            <div class="row">
+              <div class="column">
+                <img class="demo cursor" src="../static/images/{{id}}/1.jpg" style="width:100%; height:300px " onclick="currentSlide(1)" alt="The Woods">
+              </div>
+              <div class="column">
+                <img class="demo cursor" src="../static/images/{{id}}/2.jpg"style="width:100%; height:300px " onclick="currentSlide(2)" alt="Cinque Terre">
+              </div>
+              <div class="column">
+                <img class="demo cursor" src="../static/images/{{id}}/3.jpg" style="width:100%; height:300px " onclick="currentSlide(3)" alt="Mountains and fjords">
+              </div>
+              <div class="column">
+                <img class="demo cursor" src="../static/images/{{id}}/4.jpg" style="width:100%; height:300px " onclick="currentSlide(4)" alt="Northern Lights">
               </div>
             </div>
-
-          <!--
-          <div class="image-gallery">
-            <h3>Image Gallery:</h3>
-            <div class = "slider-frame">
-              {% for image in image_gallery %}
-              <p>Image {{ loop.index }}</p>
-                <div class = "slider-images">
-                  <img src="{{ url_for('static', filename=image) }}">
-                </div>
-              {% endfor %}
-            </div>
-          </div>
-          -->
-          <div class="w3-content w3-display-container">
-          {% for image in image_gallery %}
-          <img class="mySlides" src="{{ url_for('static', filename=image) }}">
-          {% endfor %}
-          <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
-          <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
           </div>
           <br>
+          <br>
+
+          <!-- for displaying 3D obj  -->
+          <a class="button" href="\render">
+            Explore 3D model
+        </a>
+          
+          <!--  -->
+          <br>
+          <br>
+          <table>
+            <tr>
+            <td>
+          <p><strong>Location:</strong> {{ location }}</p>
+          <p><strong>Description:</strong> {{ description }}</p>
+          <p><strong>Property Type:</strong> {{ property_type }}</p>
+          <p><strong>Number of Bedrooms:</strong> {{ num_bedrooms }}</p>
+          <p><strong>Number of Bathrooms:</strong> {{ num_bathrooms }}</p>
+          <p><strong>Size:</strong> {{ size }}</p>
+          <p><strong>Amenities:</strong> {{ amenities }}</p>
+        </td>
+        <td>
+          <p><strong>Price:</strong> {{ price }}</p>
+          <p><strong>Contact Information:</strong></p>
+          <ul>
+              <li><strong>Agent/Owner Name:</strong> {{ agent_name }}</li>
+              <li><strong>Phone:</strong> {{ phone }}</li>
+              <li><strong>Email:</strong> {{ email }}</li>
+              <li><strong>Website:</strong> {{ website }}</li>
+          </ul>
+        </td>
+      </tr>
+
+      </table>
+    </div>
+          
   </section>
   
+  
   <!-- end sale section -->
-
-
 
   <!-- info section -->
   <section class="info_section ">
@@ -189,50 +311,11 @@
               Information
             </h5>
             <p>
-              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+              Exploring the In-Verse of Reality
             </p>
           </div>
         </div>
 
-        <div class="col-md-3">
-          <div class="info_links">
-            <h5>
-              Useful Link
-            </h5>
-            <ul>
-              <li>
-                <a href="">
-                  There are many
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  variations of
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  passages of
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  Lorem Ipsum
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  available, but
-                </a>
-              </li>
-              <li>
-                <a href="">
-                  the i
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
         
       </div>
     </div>
@@ -246,7 +329,7 @@
     <div class="container">
       <p>
         &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
+        <a href="http://www.vector-ai.co">VECTOR Inc.</a>
       </p>
     </div>
   </section>
@@ -257,22 +340,35 @@
   <script type="text/javascript" src="{{url_for('static', filename = "js/bootstrap.js")}}"></script>
   <script type="text/javascript" src="{{url_for('static', filename = "js/custom.js")}}"></script>
   <script>
-    var slideIndex = 1;
-    showDivs(slideIndex);
-
-    function plusDivs(n) {
-      showDivs(slideIndex += n);
+    vlet slideIndex = 1;
+    showSlides(slideIndex);
+    
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
     }
-
-    function showDivs(n) {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      if (n > x.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = x.length} ;
-      for (i = 0; i <s x.length; i++) {
-        x[i].style.display = "none";
+    
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("demo");
+      let captionText = document.getElementById("caption");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
       }
-      x[slideIndex-1].style.display = "block";
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+      captionText.innerHTML = dots[slideIndex-1].alt;
     }
   </script>
 </body>
