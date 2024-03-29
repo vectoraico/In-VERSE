@@ -16,7 +16,7 @@ def load_geometries(img_file, num_geometries):
     return loaded_geometries
 
 def visualize_geometries(geometries):
-    o3d.visualization.draw_geometries(geometries)
+    o3d.visualization.draw_geometries(geometries, mesh_show_back_face=True)
     
 if __name__ == "__main__":
     # Example usage: python visualize.py model_name num_geometries
