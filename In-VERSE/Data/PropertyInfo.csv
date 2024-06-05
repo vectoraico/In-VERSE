@@ -1,0 +1,5 @@
+id,property_name,location,description,property_type,num_rooms,num_bathrooms,size,amenities,price,agent_name,phone,email,website,image_gallery
+1,VECTOR Office,"#11, Third Floor, Al-Hameed Mall, G-11 Markaz",Premium office space for startups,Commercial Office,2,1,358,"Kitchenette, Balcony, Security","67,000/Mo",Rizwan Akbar,0314-5258971,rizw@kk.com.pk,vector-ai.co,
+2,Landkrafts Office,"#13/14, Second Floor, Al-Hameed Mall, G-11 Markaz",Premium office space for property dealers,Commercial Office,1,2,718,"Kitchenette, Balcony, Security","150,000/Mo",Arshad Khan,0310-3309821,arshad@enterprise.com,enterprise.com,
+3,Seminar Room,"C-401, Fourth Floor, FAST NUCES, Islamabad",Spacious room for workshops and seminars,Seminar Hall,1,0,749,"Balcony, Projector, Air Conditioning",,Admin NU FAST ,-,help@nu.edu.pk,nu.edu.pk,
+4,Auditorium,"Ground Floor, A-Block, FAST NUCES, Islamabad",High-class space for your mega events,Seminar Hall,1,0,3160,"Projector, Air Conditioning, Mobility Support",,Admin NU FAST,-,help@nu.edu.pk,nu.edu.pk,

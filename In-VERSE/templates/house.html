@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>In-Verse</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../static/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="../static/css/responsive.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Position the image container (needed to position the left and right arrows) */
+    .container {
+      position: relative;
+    }
+    
+    /* Hide the images by default */
+    .mySlides {
+      display: none;
+    }
+    .mySlides img{
+      height:250px
+    }
+    
+    /* Add a pointer when hovering over the thumbnail images */
+    .cursor {
+      cursor: pointer;
+    }
+    
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 40%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+    
+    /* Container for image text */
+    .caption-container {
+      text-align: center;
+      background-color: #222;
+      padding: 2px 16px;
+      color: white;
+    }
+    
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    /* four columns side by side */
+    .column {
+      float: left;
+      width: 25%;
+    }
+    
+    /* Add a transparency effect for thumnbail images */
+    .demo {
+      opacity: 0.6;
+    }
+    
+    .active,
+    .demo:hover {
+      opacity: 1;
+    }
+    .button {
+      background-color: #04AA6D;
+      border: none;
+      color: white;
+      padding: 15px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      margin-left:43%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="/index">
+            <img src="{{url_for('static', filename = "images/logo.png")}}" alt="" />
+          </a>
+          <div class="navbar-collapse" id="">
+            <ul class="navbar-nav justify-content-between ">
+              <!--
+              <div class="User_option">
+                <li class="">
+                  <a class="mr-4" href="">
+                    Login
+                  </a>
+                  <a class="" href="">
+                    Sign up
+                  </a>
+                </li>
+              </div>
+              -->
+            </ul>
+
+            <div class="custom_menu-btn">
+              <button onclick="openNav()">
+                <span class="s-1">
+
+                </span>
+                <span class="s-2">
+
+                </span>
+                <span class="s-3">
+
+                </span>
+              </button>
+            </div>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="/index">HOME</a>
+                <a href="/about">ABOUT</a>
+                <a href="/house/0">HOUSE</a>
+                <a href="/price">PRICING</a>
+                <a href="/contact">CONTACT US</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- sale section -->
+  <section class="sale_section layout_padding">
+    <div class="container">
+      <h1>Property Information</h1>
+      <div class="property-info">
+          <h2>{{ property_name }}</h2>
+          <div class="container">
+
+            <!-- Full-width images with number text -->
+            <div class="mySlides">
+              <img src="../static/images/{{id}}/1.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+              <img src="../static/images/{{id}}/2.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+              <img src="../static/images/{{id}}/3.jpg" style="width:100%">
+            </div>
+        
+            <div class="mySlides">
+              <img src="../static/images/{{id}}/4.jpg" style="width:100%">
+            </div>
+        
+            <!-- Thumbnail images -->
+            <div class="row">
+              <div class="column">
+                <img class="demo cursor" src="../static/images/{{id}}/1.jpg" style="width:100%; height:300px " onclick="currentSlide(1)" alt="The Woods">
+              </div>
+              <div class="column">
+                <img class="demo cursor" src="../static/images/{{id}}/2.jpg"style="width:100%; height:300px " onclick="currentSlide(2)" alt="Cinque Terre">
+              </div>
+              <div class="column">
+                <img class="demo cursor" src="../static/images/{{id}}/3.jpg" style="width:100%; height:300px " onclick="currentSlide(3)" alt="Mountains and fjords">
+              </div>
+              <div class="column">
+                <img class="demo cursor" src="../static/images/{{id}}/4.jpg" style="width:100%; height:300px " onclick="currentSlide(4)" alt="Northern Lights">
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+
+          <!-- for displaying 3D obj  -->
+          <a class="button" href="/model/{{model}}">
+            Explore 3D model
+          </a>
+          <br>
+          
+          <a href = "/download_pano/{{id}}">
+            <div style="margin-left:47%">
+              <img src="../static/images/VR.png" style="width:15%" text="View in VR">
+              <p style="margin-left:5px"> View In VR </p>
+          </div>
+          </a>
+          
+          <!--  -->
+          <br>
+          <br>
+          <table>
+            <tr>
+            <td>
+          <p><strong>Location:</strong> {{ location }}</p>
+          <p><strong>Description:</strong> {{ description }}</p>
+          <p><strong>Property Type:</strong> {{ property_type }}</p>
+          <p><strong>Number of Bedrooms:</strong> {{ num_bedrooms }}</p>
+          <p><strong>Number of Bathrooms:</strong> {{ num_bathrooms }}</p>
+          <p><strong>Size:</strong> {{ size }}</p>
+          <p><strong>Amenities:</strong> {{ amenities }}</p>
+        </td>
+        <td>
+          <p><strong>Price:</strong> Rs. {{ price }}</p>
+          <p><strong>Contact Information:</strong></p>
+          <ul>
+              <li><strong>Agent/Owner Name:</strong> {{ agent_name }}</li>
+              <li><strong>Phone:</strong> {{ phone }}</li>
+              <li><strong>Email:</strong> {{ email }}</li>
+              <li><strong>Website:</strong> {{ website }}</li>
+          </ul>
+        </td>
+      </tr>
+
+      </table>
+    </div>
+          
+  </section>
+  
+  
+  <!-- end sale section -->
+
+  <!-- info section -->
+  <section class="info_section ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="info_contact">
+            <h5>
+              About Organization
+            </h5>
+            <div>
+              <div class="img-box">
+                <img src="{{ url_for('static', filename="images/location.png")}}" width="18px" alt="">
+              </div>
+              <p>
+                Office No. 311 - Al Hameed Mall, G11 Markaz Isb
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="{{ url_for('static', filename="images/phone.png")}}" width="12px" alt="">
+              </div>
+              <p>
+                +923145258971
+              </p>
+            </div>
+            <div>
+              <div class="img-box">
+                <img src="{{ url_for('static', filename="images/mail.png")}}" width="18px" alt="">
+              </div>
+              <p>
+                hello@vector-ai.co
+              </p>
+            </div>
+            <div class="social_box">
+              <a href="https://www.linkedin.com/company/vectoraico">
+                <img src="{{ url_for('static', filename="images/linkedin.png")}}" alt="">
+              </a>
+              <p>
+                linkedin.com/company/vectoraico
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-5">
+          <div class="info_info">
+            <h5>
+              Information
+            </h5>
+            <p>
+              A virtual Explorable Property website.
+            </p>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+
+
+  <!-- footer section -->
+  <section class="container-fluid footer_section ">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="http://www.vector-ai.co">VECTOR Inc.</a>
+      </p>
+    </div>
+  </section>
+  <!-- end  footer section -->
+
+
+  <script type="text/javascript" src="{{url_for('static', filename = "js/jquery-3.4.1.min.js")}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename = "js/bootstrap.js")}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename = "js/custom.js")}}"></script>
+  <script>
+    vlet slideIndex = 1;
+    showSlides(slideIndex);
+    
+    // Next/previous controls
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    // Thumbnail image controls
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("demo");
+      let captionText = document.getElementById("caption");
+      if (n > slides.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";
+      dots[slideIndex-1].className += " active";
+      captionText.innerHTML = dots[slideIndex-1].alt;
+    }
+  </script>
+</body>
+</body>
+
+</html>

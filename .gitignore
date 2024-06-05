@@ -1,1 +1,11 @@
-/Datasets
+# Ignore all files in the HorizonNet/ckpt directory
+/HorizonNet/ckpt/*
+
+# Ignore .DS_Store files anywhere in the repository
+**/.DS_Store
+
+# Ignore Jupyter notebook checkpoints anywhere in the repository
+**/.ipynb_checkpoints
+
+# Ignore all files in the In-VERSE/static/models/output directory
+/In-VERSE/static/models/output/*

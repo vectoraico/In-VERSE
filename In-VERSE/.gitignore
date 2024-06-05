@@ -1,0 +1,8 @@
+/Datasets
+static/models/
+*/__pycache__
+*/*/.DS_Store
+static/Archive
+.DS_Store
+test.ipynb
+
