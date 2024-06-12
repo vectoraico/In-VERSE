@@ -9,3 +9,6 @@
 
 # Ignore all files in the In-VERSE/static/models/output directory
 /In-VERSE/static/models/output/*
+
+# Ignore Pycache files anywhere in the repository
+**/__pycache__
