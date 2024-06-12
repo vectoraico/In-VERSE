@@ -19,8 +19,10 @@ def list_files(input_folder):
     # return [os.path.join(input_folder, file) for file in files]
     return imgs
 
-def stitch_panorama(input_folder, output_name, config_file="configs/stitching_config.yaml"):
+def stitch_panorama(input_folder, output_name, config_file="../Stitching/configs/stitching_config.yaml", out_path=None):
     # Load stitching parameters from YAML config file
+    print('-------------------------')
+    print(config_file)
     stitching_parameters = load_stitching_parameters(config_file)
 
     # Initialize the Stitcher with the parameters
@@ -35,7 +37,10 @@ def stitch_panorama(input_folder, output_name, config_file="configs/stitching_co
     # Convert and save panorama
     panorama = cv2.cvtColor(panorama, cv2.COLOR_BGR2RGB)
     image = Image.fromarray(panorama)
-    out_path = f"output/{output_name}.jpg"
+    if not out_path:
+        out_path = f"output/{output_name}.jpg"
+    else:
+        out_path = os.path.join(out_path, f"{output_name}.jpg")
     image.save(out_path)
 
     return out_path

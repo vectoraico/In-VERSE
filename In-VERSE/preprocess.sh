@@ -7,11 +7,12 @@ if [ "$#" -lt 1 ]; then
 fi
 
 # Assigning parameters to variables
-img_glob="$1"
+img_path="$1"
 extra_params="${@:2}"  # Collect all extra parameters
 
 # Execute the provided command
-python preprocess.py --img_glob "assets/$img_glob" --output_dir "preprocessed/" $extra_params
+# python HorizonNet/preprocess.py --img_glob "HorizonNet/assets/$img_glob" --output_dir "HorizonNet/preprocessed/" $extra_params
+python HorizonNet/preprocess.py --img_glob "$img_path" --output_dir "HorizonNet/preprocessed/" $extra_params
 
 
 # Extra params

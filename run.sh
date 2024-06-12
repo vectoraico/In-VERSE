@@ -13,4 +13,4 @@ BASENAME=$(basename "$FILENAME" .jpg) # assuming the extension is always .jpg
 # Call the scripts with appropriate arguments
 ./preprocess.sh "$FILENAME"
 ./infer.sh "$BASENAME"
-./visualize_save.sh "$BASENAME"
+./visualize_save.sh "$BASENAME"  --save_only
