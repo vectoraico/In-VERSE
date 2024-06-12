@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="keywords"
+      content="property, real estate, homes, apartments, houses"
+    />
+    <meta
+      name="description"
+      content="Submit your property details to be listed on our real estate platform."
+    />
+    <meta name="author" content="VECTOR Inc." />
+    <title>Property Submission - InVerse</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,700|Raleway:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="../static/css/style.css" rel="stylesheet" />
+    <link href="../static/css/responsive.css" rel="stylesheet" />
+    <style>
+      .form-section {
+        background-color: #f8f9fa;
+        padding: 50px 0;
+      }
+      .form-container {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-container h1 {
+        margin-bottom: 30px;
+        color: #333;
+      }
+      .form-container label {
+        font-weight: bold;
+        margin-top: 10px;
+        color: #555;
+      }
+      .form-container input,
+      .form-container textarea {
+        margin-bottom: 15px;
+      }
+      .form-container button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .form-container button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero_area">
+      <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="/index">
+              <img
+                src="{{ url_for('static', filename='images/logo.png') }}"
+                alt="InVerse Logo"
+              />
+            </a>
+            <div class="navbar-collapse" id="">
+              <ul class="navbar-nav justify-content-between"></ul>
+              <div class="custom_menu-btn">
+                <button onclick="openNav()">
+                  <span class="s-1"></span>
+                  <span class="s-2"></span>
+                  <span class="s-3"></span>
+                </button>
+              </div>
+              <div id="myNav" class="overlay">
+                <div class="overlay-content">
+                  <a href="/index">HOME</a>
+                  <a href="/about">ABOUT</a>
+                  <a href="/property/0/1">HOUSE</a>
+                  <a href="/price">PRICING</a>
+                  <a href="/contact">CONTACT US</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+    </div>
+    <section class="form-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="form-container">
+              <h1>Submit Property Details</h1>
+              <form
+                action="/submit"
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="property_name">Property Name:</label>
+                    <input
+                      type="text"
+                      id="property_name"
+                      name="property_name"
+                      class="form-control"
+                      required
+                    />
+                    <label for="location">Location:</label>
+                    <input
+                      type="text"
+                      id="location"
+                      name="location"
+                      class="form-control"
+                      required
+                    />
+                    <label for="property_type">Property Type:</label>
+                    <input
+                      type="text"
+                      id="property_type"
+                      name="property_type"
+                      class="form-control"
+                      required
+                    />
+                    <label for="num_rooms">Number of Rooms:</label>
+                    <input
+                      type="number"
+                      id="num_rooms"
+                      name="num_rooms"
+                      class="form-control"
+                      required
+                    />
+                    <label for="size">Size (sq ft):</label>
+                    <input
+                      type="number"
+                      id="size"
+                      name="size"
+                      class="form-control"
+                      required
+                    />
+                    <label for="price">Price (Rs.):</label>
+                    <input
+                      type="number"
+                      id="price"
+                      name="price"
+                      class="form-control"
+                      required
+                    />
+                    <label for="email">Email:</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="description">Description:</label>
+                    <textarea
+                      id="description"
+                      name="description"
+                      class="form-control"
+                      rows="4"
+                      required
+                    ></textarea>
+                    <label for="num_bathrooms">Number of Bathrooms:</label>
+                    <input
+                      type="number"
+                      id="num_bathrooms"
+                      name="num_bathrooms"
+                      class="form-control"
+                      required
+                    />
+                    <label for="amenities">Amenities:</label>
+                    <input
+                      type="text"
+                      id="amenities"
+                      name="amenities"
+                      class="form-control"
+                      required
+                    />
+                    <label for="agent_name">Agent Name:</label>
+                    <input
+                      type="text"
+                      id="agent_name"
+                      name="agent_name"
+                      class="form-control"
+                      required
+                    />
+                    <label for="phone">Phone:</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      class="form-control"
+                      required
+                    />
+                    <label for="website">Website:</label>
+                    <input
+                      type="url"
+                      id="website"
+                      name="website"
+                      class="form-control"
+                    />
+                    <label for="photos">Upload Photos (4-8):</label>
+                    <input
+                      type="file"
+                      id="photos"
+                      name="photos"
+                      class="form-control"
+                      accept="image/*"
+                      multiple
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 text-center mt-3">
+                    <button type="submit" class="btn btn-primary">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="info_section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="info_contact">
+              <h5>About Organization</h5>
+              <div>
+                <div class="img-box">
+                  <img
+                    src="{{ url_for('static', filename='images/location.png') }}"
+                    width="18px"
+                    alt=""
+                  />
+                </div>
+                <p>Office No. 311 - Al Hameed Mall, G11 Markaz Isb</p>
+              </div>
+              <div>
+                <div class="img-box">
+                  <img
+                    src="{{ url_for('static', filename='images/phone.png') }}"
+                    width="12px"
+                    alt=""
+                  />
+                </div>
+                <p>+923145258971</p>
+              </div>
+              <div>
+                <div class="img-box">
+                  <img
+                    src="{{ url_for('static', filename='images/mail.png') }}"
+                    width="18px"
+                    alt=""
+                  />
+                </div>
+                <p>hello@vector-ai.co</p>
+              </div>
+              <div class="social_box">
+                <a href="https://www.linkedin.com/company/vectoraico">
+                  <img
+                    src="{{ url_for('static', filename='images/linkedin.png') }}"
+                    alt=""
+                  />
+                </a>
+                <p>linkedin.com/company/vectoraico</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="info_info">
+              <h5>Information</h5>
+              <p>A Virtual Explorable Property website.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container-fluid footer_section">
+      <div class="container">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+          <a href="http://www.vector-ai.co">VECTOR Inc.</a>
+        </p>
+      </div>
+    </section>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/bootstrap.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/custom.js') }}"
+    ></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </body>
+</html>

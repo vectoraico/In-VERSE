@@ -19,6 +19,7 @@ if __name__ == '__main__':
     parser.add_argument('--layout', required=True,
                         help='Txt or json file containing layout corners (cor_id)')
     parser.add_argument('--out')
+    parser.add_argument('--save_only', action='store_true', help='Flag to indicate saving only, without additional actions')
     parser.add_argument('--vis', action='store_true')
     parser.add_argument('--ignore_floor', action='store_true',
                         help='Skip rendering floor')
@@ -154,4 +155,5 @@ if __name__ == '__main__':
               else:
                   print(f"Unsupported geometry type: {type(geometry)}")
 
-        o3d.visualization.draw_geometries(draw_geometries, mesh_show_back_face=True)
+        if not args.save_only:
+            o3d.visualization.draw_geometries(draw_geometries, mesh_show_back_face=True)

@@ -12,3 +12,9 @@
 
 # Ignore Pycache files anywhere in the repository
 **/__pycache__
+
+# Ignore inferred
+/HorizonNet/inferred/*
+
+# Ignore preprocessed
+/HorizonNet/preprocessed/*
